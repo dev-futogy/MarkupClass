@@ -11,15 +11,6 @@
 		/// Clean up any resources being used.
 		/// </summary>
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-		protected override void Dispose(bool disposing)
-		{
-			if(disposing && (components != null))
-			{
-				components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
-
 		#region Windows Form Designer generated code
 
 		/// <summary>
@@ -36,8 +27,8 @@
 			// _pnlFrame
 			// 
 			this._pnlFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlFrame.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this._pnlFrame.Location = new System.Drawing.Point(1, 0);
 			this._pnlFrame.Name = "_pnlFrame";
@@ -47,7 +38,7 @@
 			// _pnlSetting
 			// 
 			this._pnlSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlSetting.Location = new System.Drawing.Point(383, 0);
 			this._pnlSetting.Name = "_pnlSetting";
 			this._pnlSetting.Size = new System.Drawing.Size(114, 470);
@@ -56,8 +47,8 @@
 			// _pnlLog
 			// 
 			this._pnlLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			| System.Windows.Forms.AnchorStyles.Left) 
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlLog.Location = new System.Drawing.Point(1, 361);
 			this._pnlLog.Name = "_pnlLog";
 			this._pnlLog.Size = new System.Drawing.Size(384, 107);
@@ -72,6 +63,7 @@
 			this.Controls.Add(this._pnlSetting);
 			this.Controls.Add(this._pnlFrame);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";

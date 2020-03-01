@@ -26,9 +26,24 @@ namespace Futogy.Log
 			_log.EventAddMessage += OnAddMessageLog;
 		}
 
+		protected override void Dispose(bool disposing)
+		{
+			if(disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+			_log.EventAddMessage -= OnAddMessageLog;
+
+		}
+
 		private void OnAddMessageLog(object sender, string text)
 		{
-			_txtLog.AppendText(text);
+			if(_txtLog != null)
+			{
+				_txtLog.AppendText(text);
+			}
+			
 		}
 	}
 }

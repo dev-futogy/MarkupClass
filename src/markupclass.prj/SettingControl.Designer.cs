@@ -138,7 +138,6 @@
 			this._txtClass.Size = new System.Drawing.Size(65, 13);
 			this._txtClass.TabIndex = 24;
 			this._txtClass.Text = "Нет класса";
-			this._txtClass.Click += new System.EventHandler(this._txtClass_Click);
 			// 
 			// SettingControl
 			// 

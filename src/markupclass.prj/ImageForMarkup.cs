@@ -6,10 +6,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Futogy.Log;
+
 namespace MarkupClass
 {
 	public sealed class ImageForMarkup : IImageForMarkup, IDisposable
 	{
+
+		#region Data
+
+		private Log _log;
+
+		#endregion
 
 		#region Event
 
@@ -39,10 +47,13 @@ namespace MarkupClass
 
 		#region .ctor
 
-		public ImageForMarkup()
+		public ImageForMarkup(
+			Log log)
 		{
 			ListImg = new List<Classifer>();
 			CurerntIamge = 0;
+
+			_log = log;
 		}
 
 		public void Dispose()
@@ -141,7 +152,7 @@ namespace MarkupClass
 					// запись массива байтов в файл
 					fileForSaveMarkup.Write(array, 0, array.Length);
 				}
-
+				_log.AddMessage("Файл разметки сохранен.");
 			}
 		}
 

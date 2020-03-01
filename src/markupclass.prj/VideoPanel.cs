@@ -37,11 +37,10 @@ namespace MarkupClass
 		{
 			if(disposing && (components != null))
 			{
-
-				_imageForMarkup.OnImageChange -= OnImageChange;
 				components.Dispose();
 			}
 			base.Dispose(disposing);
+			_imageForMarkup.OnImageChange -= OnImageChange;
 		}
 
 		#endregion

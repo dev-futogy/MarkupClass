@@ -15,6 +15,7 @@ namespace MarkupClass
 
 		#region .ctor
 
+		/// <summary> Создать контрол управления.</summary>
 		public SettingControl(
 			ImageForMarkup imageForMarkup,
 			Log log)
@@ -31,7 +32,6 @@ namespace MarkupClass
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-			_imageForMarkup.SaveMarkup();
 			if(disposing && (components != null))
 			{
 				
@@ -43,36 +43,16 @@ namespace MarkupClass
 		#endregion
 
 		/// <summary> Вызывается при нежатие "Открыть". Выбор папки с картинами.</summary>
-		private void OnOpenImgClick(object sender, EventArgs e)
-		{
+		private void OnOpenImgClick(object sender, EventArgs e) => OpenFolderImage();
 
-			if(_folderDialog.ShowDialog() == DialogResult.Cancel)
-				return;
-
-			string path = _folderDialog.SelectedPath;
-
-			DirectoryInfo directoryInfo = new DirectoryInfo(path);
-
-			if(_imageForMarkup.ListImg.Count != 0)
-				_imageForMarkup.ListImg.Clear();
-
-			foreach(var item in directoryInfo.GetFiles("*.jpg"))
-				_imageForMarkup.AddImageInList(item.FullName,item.Name);
-
-			_imageForMarkup.PathDirectoryImage = path;
-
-			_imageForMarkup.ShowImg();
-			ChangeTextClass();
-			_log.AddMessage("Папка открыта.");
-
-		}
-
+		/// <summary> Следующее изображение.</summary>
 		private void OnNextImageClick(object sender, EventArgs e)
 		{
 			_imageForMarkup.NextImage();
 			ChangeTextClass();
 		}
 
+		/// <summary> Предыдущее изображение.</summary>
 		private void OnBackImageClick(object sender, EventArgs e)
 		{
 			_imageForMarkup.BackImage();
@@ -80,7 +60,7 @@ namespace MarkupClass
 		}
 
 		/// <summary> Отобразить название класса на текущем изображении.</summary>
-		private void ChangeTextClass()
+		public void ChangeTextClass()
 		{
 			if(_imageForMarkup != null)
 			{
@@ -116,42 +96,49 @@ namespace MarkupClass
 		}
 
 		/// <summary> Устанавливает класс - Без СИЗ для текущего изображения.</summary>
-		private void OnNoSizClick(object sender, EventArgs e)
-		{
-			_imageForMarkup.SetClassImg((int)EnumClassifers.NoSiz);
-			ChangeTextClass();
-			
-		}
+		private void OnNoSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.NoSiz);
 
 		/// <summary> Устанавливает класс - Есть каска для текущего изображения.</summary>
-		private void OnCaskaClick(object sender, EventArgs e)
-		{
-			_imageForMarkup.SetClassImg((int)EnumClassifers.Shlem);
-			ChangeTextClass();
-		}
+		private void OnCaskaClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.Shlem);
 
 		/// <summary> Устанавливает класс - Есть жилет для текущего изображения.</summary>
-		private void OnJiletClick(object sender, EventArgs e)
-		{
-			_imageForMarkup.SetClassImg((int)EnumClassifers.Jilet);
-			ChangeTextClass();
-		}
+		private void OnJiletClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.Jilet);
 
 		/// <summary> Устанавливает класс - Есть все СИЗ для текущего изображения.</summary>
-		private void OnAllSizClick(object sender, EventArgs e)
+		private void OnAllSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.All);
+
+		/// <summary> Сохранить разметку.</summary>
+		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.SaveMarkup();
+
+		/// <summary> Устнановить номер класса.</summary>
+		/// <param name="idClass">ID класса.</param>
+		public void SetIdClass(int idClass)
 		{
-			_imageForMarkup.SetClassImg((int)EnumClassifers.All);
+			_imageForMarkup.SetClassImg(idClass);
 			ChangeTextClass();
 		}
 
-		private void OnSaveMarkup(object sender, EventArgs e)
+		/// <summary> Открыть папку с картинками для разметки. </summary>
+		public void OpenFolderImage()
 		{
-			_imageForMarkup.SaveMarkup();
-		}
+			if(_folderDialog.ShowDialog() == DialogResult.Cancel)
+				return;
 
-		private void _txtClass_Click(object sender, EventArgs e)
-		{
+			string path = _folderDialog.SelectedPath;
 
+			DirectoryInfo directoryInfo = new DirectoryInfo(path);
+
+			if(_imageForMarkup.ListImg.Count != 0)
+				_imageForMarkup.ListImg.Clear();
+
+			foreach(var item in directoryInfo.GetFiles("*.jpg"))
+				_imageForMarkup.AddImageInList(item.FullName, item.Name);
+
+			_imageForMarkup.PathDirectoryImage = path;
+
+			_imageForMarkup.ShowImg();
+			ChangeTextClass();
+			_log.AddMessage("Папка открыта.");
 		}
 	}
 } 

@@ -23,7 +23,8 @@ namespace Futogy.Log
 		/// <param name="text">Тест сообщения.</param>
 		public void AddMessage(string text)
 		{
-			OnAddMassage(text);
+			var msg = $"[{DateTime.Now}] - " + text + "\n";
+			OnAddMassage(msg);
 		}
 
 	}
