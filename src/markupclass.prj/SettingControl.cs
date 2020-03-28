@@ -4,6 +4,8 @@ using System.IO;
 using System.Drawing;
 
 using Futogy.Log;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace MarkupClass
 {
@@ -11,6 +13,7 @@ namespace MarkupClass
 	{
 		private ImageForMarkup _imageForMarkup;
 		private Log _log;
+		private IEnumerable<string> filesDirectory;
 
 
 		#region .ctor
@@ -126,13 +129,15 @@ namespace MarkupClass
 
 			string path = _folderDialog.SelectedPath;
 
-			DirectoryInfo directoryInfo = new DirectoryInfo(path);
+			filesDirectory = Directory.EnumerateFiles(path, "*.*", SearchOption.TopDirectoryOnly)
+						.Where(s => s.EndsWith(".png") || s.EndsWith(".jpg") || s.EndsWith(".bmp")|| s.EndsWith(".jpeg"));
 
 			if(_imageForMarkup.ListImg.Count != 0)
 				_imageForMarkup.ListImg.Clear();
 
-			foreach(var item in directoryInfo.GetFiles("*.jpg"))
-				_imageForMarkup.AddImageInList(item.FullName, item.Name);
+
+			foreach(var item in filesDirectory)
+				_imageForMarkup.AddImageInList(item, Path.GetFileName(item));
 
 			_imageForMarkup.PathDirectoryImage = path;
 

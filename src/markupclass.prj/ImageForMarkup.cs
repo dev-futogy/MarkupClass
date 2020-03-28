@@ -177,13 +177,13 @@ namespace MarkupClass
 
 		private string TextForSaveMarkup()
 		{
-			string text = "IdImage , Class\n";
+			string text = "IdImage,Class\n";
 
 			foreach(var classifier in ListImg)
 			{
 				if(classifier.IdClass != (int)EnumClassifers.NoClass)
 				{
-					text += $"{Path.GetFileNameWithoutExtension(classifier.Name)} , {GetNameClass(classifier.IdClass)}\n";
+					text += $"{Path.GetFileNameWithoutExtension(classifier.Name)},{GetNameClass(classifier.IdClass)}\n";
 				}
 				
 			}

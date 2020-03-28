@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkupClass", "src\MarkupClass.prj\MarkupClass.csproj", "{0A97AC5B-D550-43B3-8A28-E4AED45B1C0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkupClass", "markupclass.prj\MarkupClass.csproj", "{0A97AC5B-D550-43B3-8A28-E4AED45B1C0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "futogy.log", "src\futogy.log.prj\futogy.log.csproj", "{D6762F4D-70F7-4F97-BD67-57B194DF6FEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "futogy.log", "futogy.log.prj\futogy.log.csproj", "{D6762F4D-70F7-4F97-BD67-57B194DF6FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
