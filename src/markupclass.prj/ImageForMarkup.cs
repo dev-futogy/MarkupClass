@@ -144,7 +144,7 @@ namespace MarkupClass
 		{
 			if(ListImg != null && ListImg.Count != 0)
 			{
-				using(FileStream fileForSaveMarkup = new FileStream($"{PathDirectoryImage}\\MarkupForClassifer.txt", FileMode.Create))
+				using(FileStream fileForSaveMarkup = new FileStream($"{PathDirectoryImage}\\MarkupForClassifer.csv", FileMode.Create))
 				{
 
 					byte[] array = Encoding.Default.GetBytes(TextForSaveMarkup());
@@ -156,15 +156,34 @@ namespace MarkupClass
 			}
 		}
 
+
+		private string GetNameClass(int IDClass)
+		{
+			switch(IDClass)
+			{
+
+				case (int)EnumClassifers.NoSiz:
+					return "NoSiz";
+				case (int)EnumClassifers.Shlem:
+					return "Shlem";
+				case (int)EnumClassifers.Jilet:
+					return "Jilet";
+				case (int)EnumClassifers.AllSiz:
+					return "AllSiz";
+			}
+			return null;
+		}
+
+
 		private string TextForSaveMarkup()
 		{
-			string text = "";
+			string text = "IdImage , Class\n";
 
 			foreach(var classifier in ListImg)
 			{
 				if(classifier.IdClass != (int)EnumClassifers.NoClass)
 				{
-					text += $"{classifier.Name},{classifier.IdClass}\n";
+					text += $"{Path.GetFileNameWithoutExtension(classifier.Name)} , {GetNameClass(classifier.IdClass)}\n";
 				}
 				
 			}

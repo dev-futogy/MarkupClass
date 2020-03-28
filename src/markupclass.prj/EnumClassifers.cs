@@ -6,6 +6,6 @@
 		NoSiz,
 		Shlem,
 		Jilet,
-		All,
+		AllSiz,
 	}
 }

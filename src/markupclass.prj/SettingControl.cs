@@ -82,7 +82,7 @@ namespace MarkupClass
 						_txtClass.Text = "Есть жилет";
 						_txtClass.ForeColor = Color.Orange;
 						break;
-					case (int)EnumClassifers.All:
+					case (int)EnumClassifers.AllSiz:
 						_txtClass.Text = "Есть все СИЗ";
 						_txtClass.ForeColor = Color.Green;
 						break;
@@ -105,7 +105,7 @@ namespace MarkupClass
 		private void OnJiletClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.Jilet);
 
 		/// <summary> Устанавливает класс - Есть все СИЗ для текущего изображения.</summary>
-		private void OnAllSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.All);
+		private void OnAllSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.AllSiz);
 
 		/// <summary> Сохранить разметку.</summary>
 		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.SaveMarkup();

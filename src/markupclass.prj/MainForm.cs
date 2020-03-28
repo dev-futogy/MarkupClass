@@ -79,7 +79,7 @@ namespace MarkupClass
 			}
 			if(keyData == Keys.D4)
 			{
-				_settingControl.SetIdClass((int)EnumClassifers.All);
+				_settingControl.SetIdClass((int)EnumClassifers.AllSiz);
 			}
 			if(keyData == (Keys.Control | Keys.S))
 			{
