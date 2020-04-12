@@ -67,48 +67,12 @@ namespace MarkupClass
 		{
 			if(_imageForMarkup != null)
 			{
-				switch(_imageForMarkup.ShowClassImg())
-				{
-					case (int)EnumClassifers.NoClass:
-						_txtClass.Text = "Нет класса";
-						_txtClass.ForeColor = Color.Black;
-						break;
-					case (int)EnumClassifers.NoSiz:
-						_txtClass.Text = "Нет СИЗов";
-						_txtClass.ForeColor = Color.Red;
-						break;
-					case (int)EnumClassifers.Shlem:
-						_txtClass.Text = "Есть каска";
-						_txtClass.ForeColor = Color.Blue;
-						break;
-					case (int)EnumClassifers.Jilet:
-						_txtClass.Text = "Есть жилет";
-						_txtClass.ForeColor = Color.Orange;
-						break;
-					case (int)EnumClassifers.AllSiz:
-						_txtClass.Text = "Есть все СИЗ";
-						_txtClass.ForeColor = Color.Green;
-						break;
-					default:
-						_txtClass.Text = "Нет класса";
-						_txtClass.ForeColor = Color.Black;
-						break;
-				}
+				_txtClass.Text = new GetNameClass(_imageForMarkup.ShowClassImg()).ToString();
+				_txtClass.ForeColor = new GetNameClass(_imageForMarkup.ShowClassImg()).ToColor();
+
 			}
 
 		}
-
-		/// <summary> Устанавливает класс - Без СИЗ для текущего изображения.</summary>
-		private void OnNoSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.NoSiz);
-
-		/// <summary> Устанавливает класс - Есть каска для текущего изображения.</summary>
-		private void OnCaskaClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.Shlem);
-
-		/// <summary> Устанавливает класс - Есть жилет для текущего изображения.</summary>
-		private void OnJiletClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.Jilet);
-
-		/// <summary> Устанавливает класс - Есть все СИЗ для текущего изображения.</summary>
-		private void OnAllSizClick(object sender, EventArgs e) => SetIdClass((int)EnumClassifers.AllSiz);
 
 		/// <summary> Сохранить разметку.</summary>
 		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.SaveMarkup();
@@ -144,6 +108,11 @@ namespace MarkupClass
 			_imageForMarkup.ShowImg();
 			ChangeTextClass();
 			_log.AddMessage("Папка открыта.");
+		}
+
+		private void OnChangeIndexCmbClass(object sender, EventArgs e)
+		{
+			SetIdClass(_cmbClassList.SelectedIndex);
 		}
 	}
 } 

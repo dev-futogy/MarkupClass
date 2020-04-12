@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifer.cs" />
-    <Compile Include="EnumClassifers.cs" />
+    <Compile Include="CarType.cs" />
     <Compile Include="IImageForMarkup.cs" />
     <Compile Include="ImageForMarkup.cs" />
     <Compile Include="MainForm.cs">
