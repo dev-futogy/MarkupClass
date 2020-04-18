@@ -41,7 +41,6 @@ namespace MarkupClass
 
 		protected override void Dispose(bool disposing)
 		{
-			_imageForMarkup.SaveMarkup();
 			if(disposing && (components != null))
 			{
 				components.Dispose();
@@ -115,11 +114,10 @@ namespace MarkupClass
 			}
 			if(keyData == (Keys.Control | Keys.S))
 			{
-				_imageForMarkup.SaveMarkup();
-			}
-			if(keyData == (Keys.Control | Keys.O))
-			{
-				_settingControl.OpenFolderImage();
+				if(_imageForMarkup.CountImage > 0)
+				{
+					ProjectSetting.Save(_imageForMarkup, _logText);
+				}
 			}
 			return base.ProcessCmdKey(ref msg, keyData);
 		}

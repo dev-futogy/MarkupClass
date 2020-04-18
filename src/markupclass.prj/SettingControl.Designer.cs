@@ -17,54 +17,54 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this._btnLoad = new System.Windows.Forms.Button();
-			this._btnSave = new System.Windows.Forms.Button();
-			this._btnOpen = new System.Windows.Forms.Button();
+			this._btnLoadProject = new System.Windows.Forms.Button();
+			this._btnCreateMarkup = new System.Windows.Forms.Button();
+			this._btnNewProject = new System.Windows.Forms.Button();
 			this._btnBackImg = new System.Windows.Forms.Button();
 			this._btnNextImg = new System.Windows.Forms.Button();
 			this._folderDialog = new System.Windows.Forms.FolderBrowserDialog();
 			this._txtClass = new System.Windows.Forms.Label();
 			this._cmbClassList = new System.Windows.Forms.ComboBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this._btnSaveProject = new System.Windows.Forms.Button();
+			this._opnFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this._btnHelp = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
-			// _btnLoad
+			// _btnLoadProject
 			// 
-			this._btnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this._btnLoad.Enabled = false;
-			this._btnLoad.Location = new System.Drawing.Point(4, 128);
-			this._btnLoad.Name = "_btnLoad";
-			this._btnLoad.Size = new System.Drawing.Size(110, 23);
-			this._btnLoad.TabIndex = 23;
-			this._btnLoad.Text = "Загрузить проект";
-			this._btnLoad.UseVisualStyleBackColor = true;
+			this._btnLoadProject.Location = new System.Drawing.Point(2, 32);
+			this._btnLoadProject.Name = "_btnLoadProject";
+			this._btnLoadProject.Size = new System.Drawing.Size(110, 23);
+			this._btnLoadProject.TabIndex = 23;
+			this._btnLoadProject.Text = "Загрузить проект";
+			this._btnLoadProject.UseVisualStyleBackColor = true;
+			this._btnLoadProject.Click += new System.EventHandler(this.OnOpenLoadProject);
 			// 
-			// _btnSave
+			// _btnCreateMarkup
 			// 
-			this._btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this._btnSave.Location = new System.Drawing.Point(3, 43);
-			this._btnSave.Name = "_btnSave";
-			this._btnSave.Size = new System.Drawing.Size(110, 39);
-			this._btnSave.TabIndex = 22;
-			this._btnSave.Text = "Генерация файла для обучения";
-			this._btnSave.UseVisualStyleBackColor = true;
-			this._btnSave.Click += new System.EventHandler(this.OnSaveMarkup);
+			this._btnCreateMarkup.Enabled = false;
+			this._btnCreateMarkup.Location = new System.Drawing.Point(2, 329);
+			this._btnCreateMarkup.Name = "_btnCreateMarkup";
+			this._btnCreateMarkup.Size = new System.Drawing.Size(110, 39);
+			this._btnCreateMarkup.TabIndex = 22;
+			this._btnCreateMarkup.Text = "Генерация файла для обучения";
+			this._btnCreateMarkup.UseVisualStyleBackColor = true;
+			this._btnCreateMarkup.Click += new System.EventHandler(this.OnSaveMarkup);
 			// 
-			// _btnOpen
+			// _btnNewProject
 			// 
-			this._btnOpen.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this._btnOpen.Location = new System.Drawing.Point(2, 3);
-			this._btnOpen.Name = "_btnOpen";
-			this._btnOpen.Size = new System.Drawing.Size(110, 23);
-			this._btnOpen.TabIndex = 21;
-			this._btnOpen.Text = "Откыть папку";
-			this._btnOpen.UseVisualStyleBackColor = true;
-			this._btnOpen.Click += new System.EventHandler(this.OnOpenImgClick);
+			this._btnNewProject.Location = new System.Drawing.Point(2, 3);
+			this._btnNewProject.Name = "_btnNewProject";
+			this._btnNewProject.Size = new System.Drawing.Size(110, 23);
+			this._btnNewProject.TabIndex = 21;
+			this._btnNewProject.Text = "Новый проект";
+			this._btnNewProject.UseVisualStyleBackColor = true;
+			this._btnNewProject.Click += new System.EventHandler(this.OnOpenImgClick);
 			// 
 			// _btnBackImg
 			// 
-			this._btnBackImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this._btnBackImg.Location = new System.Drawing.Point(2, 205);
+			this._btnBackImg.Enabled = false;
+			this._btnBackImg.Location = new System.Drawing.Point(2, 141);
 			this._btnBackImg.Name = "_btnBackImg";
 			this._btnBackImg.Size = new System.Drawing.Size(110, 23);
 			this._btnBackImg.TabIndex = 20;
@@ -74,8 +74,8 @@
 			// 
 			// _btnNextImg
 			// 
-			this._btnNextImg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this._btnNextImg.Location = new System.Drawing.Point(2, 176);
+			this._btnNextImg.Enabled = false;
+			this._btnNextImg.Location = new System.Drawing.Point(2, 112);
 			this._btnNextImg.Name = "_btnNextImg";
 			this._btnNextImg.Size = new System.Drawing.Size(110, 23);
 			this._btnNextImg.TabIndex = 19;
@@ -85,9 +85,9 @@
 			// 
 			// _txtClass
 			// 
-			this._txtClass.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this._txtClass.AutoSize = true;
-			this._txtClass.Location = new System.Drawing.Point(26, 259);
+			this._txtClass.Enabled = false;
+			this._txtClass.Location = new System.Drawing.Point(26, 222);
 			this._txtClass.Name = "_txtClass";
 			this._txtClass.Size = new System.Drawing.Size(65, 13);
 			this._txtClass.TabIndex = 24;
@@ -95,8 +95,8 @@
 			// 
 			// _cmbClassList
 			// 
-			this._cmbClassList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this._cmbClassList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this._cmbClassList.Enabled = false;
 			this._cmbClassList.FormattingEnabled = true;
 			this._cmbClassList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this._cmbClassList.Items.AddRange(new object[] {
@@ -112,38 +112,56 @@
             "Bike",
             "SpecialCar",
             "EmergencyCar"});
-			this._cmbClassList.Location = new System.Drawing.Point(3, 285);
+			this._cmbClassList.Location = new System.Drawing.Point(3, 248);
 			this._cmbClassList.Name = "_cmbClassList";
 			this._cmbClassList.Size = new System.Drawing.Size(109, 21);
 			this._cmbClassList.TabIndex = 25;
 			this._cmbClassList.SelectedIndexChanged += new System.EventHandler(this.OnChangeIndexCmbClass);
 			// 
-			// button1
+			// _btnSaveProject
 			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.button1.Enabled = false;
-			this.button1.Location = new System.Drawing.Point(3, 99);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(110, 23);
-			this.button1.TabIndex = 26;
-			this.button1.Text = "Сохранить проект";
-			this.button1.UseVisualStyleBackColor = true;
+			this._btnSaveProject.Enabled = false;
+			this._btnSaveProject.Location = new System.Drawing.Point(2, 61);
+			this._btnSaveProject.Name = "_btnSaveProject";
+			this._btnSaveProject.Size = new System.Drawing.Size(110, 23);
+			this._btnSaveProject.TabIndex = 26;
+			this._btnSaveProject.Text = "Сохранить проект";
+			this._btnSaveProject.UseVisualStyleBackColor = true;
+			this._btnSaveProject.Click += new System.EventHandler(this.OnSaveProject);
+			// 
+			// _opnFileDialog
+			// 
+			this._opnFileDialog.FileName = "project.xml";
+			this._opnFileDialog.Filter = "XML|*.xml";
+			this._opnFileDialog.Title = "Открыть файл проекта";
+			this._opnFileDialog.ValidateNames = false;
+			// 
+			// _btnHelp
+			// 
+			this._btnHelp.Location = new System.Drawing.Point(29, 397);
+			this._btnHelp.Name = "_btnHelp";
+			this._btnHelp.Size = new System.Drawing.Size(46, 37);
+			this._btnHelp.TabIndex = 27;
+			this._btnHelp.Text = "????";
+			this._btnHelp.UseVisualStyleBackColor = true;
+			this._btnHelp.Click += new System.EventHandler(this.OnOpenHelp);
 			// 
 			// SettingControl
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Window;
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this._btnHelp);
+			this.Controls.Add(this._btnSaveProject);
 			this.Controls.Add(this._cmbClassList);
 			this.Controls.Add(this._txtClass);
-			this.Controls.Add(this._btnLoad);
-			this.Controls.Add(this._btnSave);
-			this.Controls.Add(this._btnOpen);
+			this.Controls.Add(this._btnLoadProject);
+			this.Controls.Add(this._btnCreateMarkup);
+			this.Controls.Add(this._btnNewProject);
 			this.Controls.Add(this._btnBackImg);
 			this.Controls.Add(this._btnNextImg);
 			this.Name = "SettingControl";
-			this.Size = new System.Drawing.Size(115, 386);
+			this.Size = new System.Drawing.Size(115, 466);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -151,14 +169,16 @@
 
 		#endregion
 
-		private System.Windows.Forms.Button _btnLoad;
-		private System.Windows.Forms.Button _btnSave;
-		private System.Windows.Forms.Button _btnOpen;
+		private System.Windows.Forms.Button _btnLoadProject;
+		private System.Windows.Forms.Button _btnCreateMarkup;
+		private System.Windows.Forms.Button _btnNewProject;
 		private System.Windows.Forms.Button _btnBackImg;
 		private System.Windows.Forms.Button _btnNextImg;
 		private System.Windows.Forms.FolderBrowserDialog _folderDialog;
 		private System.Windows.Forms.Label _txtClass;
 		private System.Windows.Forms.ComboBox _cmbClassList;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button _btnSaveProject;
+		private System.Windows.Forms.OpenFileDialog _opnFileDialog;
+		private System.Windows.Forms.Button _btnHelp;
 	}
 }

@@ -12,7 +12,7 @@ namespace MarkupClass
 		public void ShowImg();
 		public void NextImage();
 		public void BackImage();
-		public void SaveMarkup();
+		public void GenerateMarkup();
 	}
 
 }

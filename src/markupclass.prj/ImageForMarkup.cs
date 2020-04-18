@@ -20,9 +20,11 @@ namespace MarkupClass
 		#endregion
 
 		#region Event
-
+		/// <summary> Вызывается при переходе к другой картинке. </summary>
 		public event EventHandler<string> OnImageChange;
 
+		/// <summary> Метод вызывающийся, при срабатывание события. </summary>
+		/// <param name="img">Путь к картинке.</param>
 		private void OnImageChangeEvent(string img)
 		{
 			if(OnImageChange != null)
@@ -35,13 +37,16 @@ namespace MarkupClass
 
 		#region Property
 
+		/// <summary> Лист путей к  картинкам. </summary>
 		public List<Classifer> ListImg { get; private set; }
 
 		/// <summary> ID выбранного изображения. </summary>
-		public int CurerntIamge { get; private set; }
+		public int CurerntIamge { get;  set; }
 
+		/// <summary> Колличество изображений. </summary>
 		public int CountImage { get => ListImg.Count-1;}
 
+		/// <summary> Путь к диретории. </summary>
 		public string PathDirectoryImage { get; set; }
 
 		#endregion
@@ -136,8 +141,8 @@ namespace MarkupClass
 		}
 
 
-		/// <summary> Сохранить разметку.</summary>
-		public void SaveMarkup()
+		/// <summary> Генерирует разметку.</summary>
+		public void GenerateMarkup()
 		{
 			if(ListImg != null && ListImg.Count != 0)
 			{
@@ -153,7 +158,8 @@ namespace MarkupClass
 			}
 		}
 
-
+		/// <summary> Преобразовывает текста и удаление лишних картинок из выборки.</summary>
+		/// <returns></returns>
 		private string TextForSaveMarkup()
 		{
 			string text = "IdImage,Class\n";
@@ -166,6 +172,7 @@ namespace MarkupClass
 				}
 				else
 				{
+					OnImageChangeEvent(null);
 					File.Delete($"{classifier.Path}");
 				}
 			}

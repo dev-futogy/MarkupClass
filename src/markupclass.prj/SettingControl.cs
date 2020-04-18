@@ -29,6 +29,7 @@ namespace MarkupClass
 
 			_imageForMarkup = imageForMarkup;
 			_log = log;
+			
 		}
 
 		/// <summary> Clean up any resources being used. </summary>
@@ -74,8 +75,8 @@ namespace MarkupClass
 
 		}
 
-		/// <summary> Сохранить разметку.</summary>
-		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.SaveMarkup();
+		/// <summary> Вызывается при нажатии на кнопку "Генерация".</summary>
+		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.GenerateMarkup();
 
 		/// <summary> Устнановить номер класса.</summary>
 		/// <param name="idClass">ID класса.</param>
@@ -88,8 +89,8 @@ namespace MarkupClass
 		/// <summary> Открыть папку с картинками для разметки. </summary>
 		public void OpenFolderImage()
 		{
-			if(_folderDialog.ShowDialog() == DialogResult.Cancel)
-				return;
+			_folderDialog.Description = "Укажите папку с изображениями для рамзетки.\nВ ней будет создан файл проекта.";
+			if(_folderDialog.ShowDialog() == DialogResult.Cancel) return;
 
 			string path = _folderDialog.SelectedPath;
 
@@ -105,14 +106,65 @@ namespace MarkupClass
 
 			_imageForMarkup.PathDirectoryImage = path;
 
+
+			OnEnabledElement();
 			_imageForMarkup.ShowImg();
 			ChangeTextClass();
 			_log.AddMessage("Папка открыта.");
 		}
 
+		/// <summary> Открывает элементы управления. </summary>
+		private void OnEnabledElement()
+		{
+			_btnNewProject.Enabled = false;
+			_btnLoadProject.Enabled = false;
+
+			_btnBackImg.Enabled = true;
+			_btnNextImg.Enabled = true;
+			_btnSaveProject.Enabled = true;
+			_btnCreateMarkup.Enabled = true;
+			_cmbClassList.Enabled = true;
+
+			_txtClass.Enabled = true;
+		}
+
+
+		/// <summary> Вызывается при выборе класса из всплывающего меню. </summary>
 		private void OnChangeIndexCmbClass(object sender, EventArgs e)
 		{
 			SetIdClass(_cmbClassList.SelectedIndex);
+		}
+
+		/// <summary> Вызывается при нажатии на кнопку "Сохранить". </summary>
+		private void OnSaveProject(object sender, EventArgs e)
+		{
+			if(_imageForMarkup.CountImage > 0)
+			{
+				ProjectSetting.Save(_imageForMarkup,_log);
+			}
+		}
+
+		/// <summary> Вызывается при нажтие кнопки "Загрузить проект". </summary>
+		private void OnOpenLoadProject(object sender, EventArgs e)
+		{
+			_folderDialog.Description = "Укажите папку с проектом.\nУспехов в работе!.";
+			if(_folderDialog.ShowDialog() == DialogResult.Cancel) return;
+
+			string path = _folderDialog.SelectedPath +"\\project.xml";
+
+			ProjectSetting.Load(_imageForMarkup, _log, path);
+			OnEnabledElement();
+			_imageForMarkup.ShowImg();
+			ChangeTextClass();
+
+		}
+
+		private void OnOpenHelp(object sender, EventArgs e)
+		{
+			using( var formHelp = new HelpForm())
+			{
+				formHelp.ShowDialog();
+			}
 		}
 	}
 } 

@@ -48,7 +48,12 @@ namespace MarkupClass
 
 		private void OnImageChange(object sender, string image)
 		{
-			_framePanel.Image = Image.FromFile(image);
+			if(image == null) _framePanel.Image.Dispose();
+			else
+			{
+				_framePanel.Image = Image.FromFile(image);
+			}
+			
 		}
 	}
 }
