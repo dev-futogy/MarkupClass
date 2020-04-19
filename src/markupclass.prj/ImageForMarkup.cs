@@ -70,7 +70,7 @@ namespace MarkupClass
 
 		/// <summary>Добавить путь к картинке в список.</summary>
 		/// <param name="image">Путь.</param>
-		public void AddImageInList(string imagepath,string imagename,int numclass = 12)
+		public void AddImageInList(string imagepath,string imagename,int numclass = 4)
 		{
 
 			ListImg?.Add(new Classifer(imagepath, imagename, numclass));

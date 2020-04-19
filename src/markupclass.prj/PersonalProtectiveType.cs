@@ -22,9 +22,9 @@ namespace MarkupClass
 			PersonalProtectiveType = personalProtectiveType;
 		}
 
-		public GetNameClass(int IdcarType)
+		public GetNameClass(int IdpersonalProtectiveType)
 		{
-			PersonalProtectiveType = (PersonalProtectiveType)IdcarType;
+			PersonalProtectiveType = (PersonalProtectiveType)IdpersonalProtectiveType;
 		}
 
 		public override string ToString()
@@ -40,14 +40,17 @@ namespace MarkupClass
 					return "Vest";
 				case PersonalProtectiveType.Nothing:
 					return "Nothing";
+				case PersonalProtectiveType.NoClass:
+					return "NoClass";
 			}
+
 			return base.ToString();
 		}
+
 		public Color ToColor()
 		{
 			switch(PersonalProtectiveType)
 			{
-
 				case PersonalProtectiveType.All:
 					return Color.Green;
 				case PersonalProtectiveType.Helmet:
@@ -56,7 +59,10 @@ namespace MarkupClass
 					return Color.Orange;
 				case PersonalProtectiveType.Nothing:
 					return Color.Red;
+				case PersonalProtectiveType.NoClass:
+					return Color.Black;
 			}
+
 			return Color.Black;
 		}
 	}
