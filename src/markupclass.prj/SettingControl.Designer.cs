@@ -92,6 +92,7 @@
 			this._txtClass.Size = new System.Drawing.Size(65, 13);
 			this._txtClass.TabIndex = 24;
 			this._txtClass.Text = "Нет класса";
+			this._txtClass.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
 			// _cmbClassList
 			// 
@@ -100,18 +101,10 @@
 			this._cmbClassList.FormattingEnabled = true;
 			this._cmbClassList.ImeMode = System.Windows.Forms.ImeMode.NoControl;
 			this._cmbClassList.Items.AddRange(new object[] {
-            "Car",
-            "CarWithTrailer",
-            "MiniTruck",
-            "Truck",
-            "BigTruck",
-            "Hauler",
-            "MiniBus",
-            "Bus",
-            "LongBus",
-            "Bike",
-            "SpecialCar",
-            "EmergencyCar"});
+            "All",
+            "Helmet",
+            "Vest",
+            "Nothing"});
 			this._cmbClassList.Location = new System.Drawing.Point(3, 248);
 			this._cmbClassList.Name = "_cmbClassList";
 			this._cmbClassList.Size = new System.Drawing.Size(109, 21);

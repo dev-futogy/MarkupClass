@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Collections.Generic;
 using System.IO;
-using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 using Futogy.Log;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace MarkupClass
 {
@@ -15,10 +14,9 @@ namespace MarkupClass
 		private Log _log;
 		private IEnumerable<string> filesDirectory;
 
-
 		#region .ctor
 
-		/// <summary> Создать контрол управления.</summary>
+		/// <summary>Создать контрол управления.</summary>
 		public SettingControl(
 			ImageForMarkup imageForMarkup,
 			Log log)
@@ -32,7 +30,7 @@ namespace MarkupClass
 			
 		}
 
-		/// <summary> Clean up any resources being used. </summary>
+		/// <summary>Clean up any resources being used. </summary>
 		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
@@ -46,24 +44,24 @@ namespace MarkupClass
 
 		#endregion
 
-		/// <summary> Вызывается при нежатие "Открыть". Выбор папки с картинами.</summary>
+		/// <summary>Вызывается при нежатие "Открыть". Выбор папки с картинами.</summary>
 		private void OnOpenImgClick(object sender, EventArgs e) => OpenFolderImage();
 
-		/// <summary> Следующее изображение.</summary>
+		/// <summary>Следующее изображение.</summary>
 		private void OnNextImageClick(object sender, EventArgs e)
 		{
 			_imageForMarkup.NextImage();
 			ChangeTextClass();
 		}
 
-		/// <summary> Предыдущее изображение.</summary>
+		/// <summary>Предыдущее изображение.</summary>
 		private void OnBackImageClick(object sender, EventArgs e)
 		{
 			_imageForMarkup.BackImage();
 			ChangeTextClass();
 		}
 
-		/// <summary> Отобразить название класса на текущем изображении.</summary>
+		/// <summary>Отобразить название класса на текущем изображении.</summary>
 		public void ChangeTextClass()
 		{
 			if(_imageForMarkup != null)
@@ -75,10 +73,10 @@ namespace MarkupClass
 
 		}
 
-		/// <summary> Вызывается при нажатии на кнопку "Генерация".</summary>
+		/// <summary>Вызывается при нажатии на кнопку "Генерация".</summary>
 		private void OnSaveMarkup(object sender, EventArgs e) => _imageForMarkup.GenerateMarkup();
 
-		/// <summary> Устнановить номер класса.</summary>
+		/// <summary>Устнановить номер класса.</summary>
 		/// <param name="idClass">ID класса.</param>
 		public void SetIdClass(int idClass)
 		{
@@ -86,7 +84,7 @@ namespace MarkupClass
 			ChangeTextClass();
 		}
 
-		/// <summary> Открыть папку с картинками для разметки. </summary>
+		/// <summary>Открыть папку с картинками для разметки. </summary>
 		public void OpenFolderImage()
 		{
 			_folderDialog.Description = "Укажите папку с изображениями для рамзетки.\nВ ней будет создан файл проекта.";
@@ -113,7 +111,7 @@ namespace MarkupClass
 			_log.AddMessage("Папка открыта.");
 		}
 
-		/// <summary> Открывает элементы управления. </summary>
+		/// <summary>Открывает элементы управления. </summary>
 		private void OnEnabledElement()
 		{
 			_btnNewProject.Enabled = false;
@@ -129,13 +127,13 @@ namespace MarkupClass
 		}
 
 
-		/// <summary> Вызывается при выборе класса из всплывающего меню. </summary>
+		/// <summary>Вызывается при выборе класса из всплывающего меню. </summary>
 		private void OnChangeIndexCmbClass(object sender, EventArgs e)
 		{
 			SetIdClass(_cmbClassList.SelectedIndex);
 		}
 
-		/// <summary> Вызывается при нажатии на кнопку "Сохранить". </summary>
+		/// <summary>Вызывается при нажатии на кнопку "Сохранить". </summary>
 		private void OnSaveProject(object sender, EventArgs e)
 		{
 			if(_imageForMarkup.CountImage > 0)
@@ -144,7 +142,7 @@ namespace MarkupClass
 			}
 		}
 
-		/// <summary> Вызывается при нажтие кнопки "Загрузить проект". </summary>
+		/// <summary>Вызывается при нажтие кнопки "Загрузить проект". </summary>
 		private void OnOpenLoadProject(object sender, EventArgs e)
 		{
 			_folderDialog.Description = "Укажите папку с проектом.\nУспехов в работе!.";

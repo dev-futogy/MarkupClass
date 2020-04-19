@@ -27,8 +27,8 @@
 			// _pnlFrame
 			// 
 			this._pnlFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-			| System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlFrame.BackColor = System.Drawing.SystemColors.ActiveCaption;
 			this._pnlFrame.Location = new System.Drawing.Point(1, 0);
 			this._pnlFrame.Name = "_pnlFrame";
@@ -38,7 +38,7 @@
 			// _pnlSetting
 			// 
 			this._pnlSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-			| System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlSetting.Location = new System.Drawing.Point(383, 0);
 			this._pnlSetting.Name = "_pnlSetting";
 			this._pnlSetting.Size = new System.Drawing.Size(114, 470);
@@ -47,8 +47,8 @@
 			// _pnlLog
 			// 
 			this._pnlLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-			| System.Windows.Forms.AnchorStyles.Left) 
-			| System.Windows.Forms.AnchorStyles.Right)));
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this._pnlLog.Location = new System.Drawing.Point(1, 361);
 			this._pnlLog.Name = "_pnlLog";
 			this._pnlLog.Size = new System.Drawing.Size(384, 107);
@@ -67,6 +67,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "MainForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "MarkupClass";
 			this.ResumeLayout(false);
 

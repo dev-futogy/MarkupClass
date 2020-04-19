@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 
 using Futogy.Log;
@@ -66,52 +63,21 @@ namespace MarkupClass
 			}
 			if(keyData == Keys.D1)
 			{
-				_settingControl.SetIdClass((int)CarType.Car);
+				_settingControl.SetIdClass((int)PersonalProtectiveType.All);
 			}
 			if(keyData == Keys.D2)
 			{
-				_settingControl.SetIdClass((int)CarType.CarWithTrailer);
+				_settingControl.SetIdClass((int)PersonalProtectiveType.Helmet);
 			}
 			if(keyData == Keys.D3)
 			{
-				_settingControl.SetIdClass((int)CarType.MiniTruck);
+				_settingControl.SetIdClass((int)PersonalProtectiveType.Vest);
 			}
 			if(keyData == Keys.D4)
 			{
-				_settingControl.SetIdClass((int)CarType.Truck);
+				_settingControl.SetIdClass((int)PersonalProtectiveType.Nothing);
 			}
-			if(keyData == Keys.D5)
-			{
-				_settingControl.SetIdClass((int)CarType.BigTruck);
-			}
-			if(keyData == Keys.D6)
-			{
-				_settingControl.SetIdClass((int)CarType.Hauler);
-			}
-			if(keyData == Keys.D7)
-			{
-				_settingControl.SetIdClass((int)CarType.MiniBus);
-			}
-			if(keyData == Keys.D8)
-			{
-				_settingControl.SetIdClass((int)CarType.Bus);
-			}
-			if(keyData == Keys.D9)
-			{
-				_settingControl.SetIdClass((int)CarType.LongBus);
-			}
-			if(keyData == Keys.D0)
-			{
-				_settingControl.SetIdClass((int)CarType.Bike);
-			}
-			if(keyData == Keys.OemMinus)
-			{
-				_settingControl.SetIdClass((int)CarType.SpecialCar);
-			}
-			if(keyData == Keys.Oemplus)
-			{
-				_settingControl.SetIdClass((int)CarType.EmergencyCar);
-			}
+			
 			if(keyData == (Keys.Control | Keys.S))
 			{
 				if(_imageForMarkup.CountImage > 0)

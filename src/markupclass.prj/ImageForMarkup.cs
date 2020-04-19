@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 using Futogy.Log;
 
@@ -20,10 +17,10 @@ namespace MarkupClass
 		#endregion
 
 		#region Event
-		/// <summary> Вызывается при переходе к другой картинке. </summary>
+		/// <summary>Вызывается при переходе к другой картинке. </summary>
 		public event EventHandler<string> OnImageChange;
 
-		/// <summary> Метод вызывающийся, при срабатывание события. </summary>
+		/// <summary>Метод вызывающийся, при срабатывание события. </summary>
 		/// <param name="img">Путь к картинке.</param>
 		private void OnImageChangeEvent(string img)
 		{
@@ -37,16 +34,16 @@ namespace MarkupClass
 
 		#region Property
 
-		/// <summary> Лист путей к  картинкам. </summary>
+		/// <summary>Лист путей к  картинкам. </summary>
 		public List<Classifer> ListImg { get; private set; }
 
-		/// <summary> ID выбранного изображения. </summary>
+		/// <summary>ID выбранного изображения. </summary>
 		public int CurerntIamge { get;  set; }
 
-		/// <summary> Колличество изображений. </summary>
+		/// <summary>Колличество изображений. </summary>
 		public int CountImage { get => ListImg.Count-1;}
 
-		/// <summary> Путь к диретории. </summary>
+		/// <summary>Путь к диретории. </summary>
 		public string PathDirectoryImage { get; set; }
 
 		#endregion
@@ -71,15 +68,15 @@ namespace MarkupClass
 
 		#region Methods
 
-		/// <summary> Добавить путь к картинке в список.</summary>
-		/// <param name="image"> Путь.</param>
+		/// <summary>Добавить путь к картинке в список.</summary>
+		/// <param name="image">Путь.</param>
 		public void AddImageInList(string imagepath,string imagename,int numclass = 12)
 		{
 
 			ListImg?.Add(new Classifer(imagepath, imagename, numclass));
 		}
 
-		/// <summary> Показать текущую картинку.</summary>
+		/// <summary>Показать текущую картинку.</summary>
 		public void ShowImg()
 		{
 			if(ListImg != null && ListImg.Count != 0)
@@ -89,7 +86,7 @@ namespace MarkupClass
 			
 		}
 
-		/// <summary> Cледующее изображение. </summary>
+		/// <summary>Cледующее изображение. </summary>
 		public void NextImage()
 		{
 			if(ListImg != null && ListImg.Count != 0)
@@ -119,18 +116,18 @@ namespace MarkupClass
 			}
 		}
 
-		/// <summary> Узнать ID класса текущего изображения.</summary>
-		/// <returns> ID класса</returns>
+		/// <summary>Узнать ID класса текущего изображения.</summary>
+		/// <returns>ID класса</returns>
 		public int ShowClassImg()
 		{
 			if(ListImg != null && ListImg.Count != 0)
 			{
 				return ListImg[CurerntIamge].IdClass;
 			}
-			return (int) CarType.NoClass;
+			return (int) PersonalProtectiveType.NoClass;
 		}
 
-		/// <summary> Установить класс для текущего изображения.</summary>
+		/// <summary>Установить класс для текущего изображения.</summary>
 		/// <param name="idClass"> ID класса..</param>
 		public void SetClassImg(int idClass)
 		{
@@ -141,7 +138,7 @@ namespace MarkupClass
 		}
 
 
-		/// <summary> Генерирует разметку.</summary>
+		/// <summary>Генерирует разметку.</summary>
 		public void GenerateMarkup()
 		{
 			if(ListImg != null && ListImg.Count != 0)
@@ -158,7 +155,7 @@ namespace MarkupClass
 			}
 		}
 
-		/// <summary> Преобразовывает текста и удаление лишних картинок из выборки.</summary>
+		/// <summary>Преобразовывает текста и удаление лишних картинок из выборки.</summary>
 		/// <returns></returns>
 		private string TextForSaveMarkup()
 		{
@@ -166,9 +163,9 @@ namespace MarkupClass
 
 			foreach(var classifier in ListImg)
 			{
-				if(classifier.IdClass != (int)CarType.NoClass)
+				if(classifier.IdClass != (int)PersonalProtectiveType.NoClass)
 				{
-					text += $"{Path.GetFileNameWithoutExtension(classifier.Name)},{new GetNameClass((CarType)classifier.IdClass).ToString()}\n";
+					text += $"{Path.GetFileNameWithoutExtension(classifier.Name)},{new GetNameClass((PersonalProtectiveType)classifier.IdClass).ToString()}\n";
 				}
 				else
 				{

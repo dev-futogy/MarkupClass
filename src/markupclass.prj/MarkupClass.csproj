@@ -57,13 +57,6 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="futogy.log, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\futogy.log.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -78,7 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classifer.cs" />
-    <Compile Include="CarType.cs" />
+    <Compile Include="PersonalProtectiveType.cs" />
     <Compile Include="HelpForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,7 +124,6 @@
     <EmbeddedResource Include="VideoPanel.resx">
       <DependentUpon>VideoPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,6 +136,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\futogy.log.prj\futogy.log.csproj">
+      <Project>{d6762f4d-70f7-4f97-bd67-57b194df6fef}</Project>
+      <Name>futogy.log</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>5.1.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
